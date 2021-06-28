@@ -25,7 +25,7 @@ DESCRIPTION-
 Constraints-
 # quantity for any item should be less than 100
 # Distance should be given in meters and should be less than 300000 m.
-# Offer type can only take two values- ("FLAT", "DELIVERY") and is optional.
+# Offer type can only take two values- ("FLAT", "DELIVERY") and is optional. This field is not case sensitive.
 # Length of the name of an Item should be maximum 250 characters
 
 Testing URL-

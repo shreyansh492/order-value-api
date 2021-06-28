@@ -23,9 +23,9 @@ class OrderSchema(marshmallow.schema.Schema):
         offer_data = data.get('offer',{})
         if not offer_data:
             return data
-        if offer_data.get('offer_type') not in ['FLAT', 'DELIVERY']:
+        if offer_data.get('offer_type').upper() not in ['FLAT', 'DELIVERY']:
             raise exceptions.OfferTypeException
-        if offer_data.get('offer_type') == "FLAT":
+        if offer_data.get('offer_type').upper() == "FLAT":
             if not offer_data.get('offer_val',None):
                 raise exceptions.OfferValException
         if type(distance) == int and distance > 300000:

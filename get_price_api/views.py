@@ -28,15 +28,16 @@ class GetPrice(APIView):
             else:
                 cost += 100000
             return cost
-        # serializer= self.serializer_class(data=request.data)
+
         total_cost = 0
         order_items = request.data['order_items']
-        for i in order_items:
-            total_cost += i['quantity']*i['price']
         offer = request.data.get('offer',{})
         offer_type = request.data.get('offer',{}).get('offer_type')
         offer_val = request.data.get('offer',{}).get('offer_val')
         distance = request.data['distance']
+
+        for i in order_items:
+            total_cost += i['quantity']*i['price']
 
         if offer_type == "FLAT":
             total_cost += delivery_cost(distance)
@@ -46,8 +47,5 @@ class GetPrice(APIView):
             pass
         else:
             total_cost += delivery_cost(distance)
-
-
-
 
         return Response({'order_total':total_cost })
